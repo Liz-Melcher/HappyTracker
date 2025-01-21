@@ -1,6 +1,7 @@
-: root {
-
+:root {
+  --font-size: 16px;
 }
+
 
 #mainContainer {
   background-image: url(backgroundimage.jpg);
@@ -33,7 +34,7 @@
     max-width: 100%;
   }
   
-  /* 6. Inherit fonts for form controls */a
+  /* 6. Inherit fonts for form controls */
   input, button, textarea, select {
     font: inherit;
   }
@@ -45,9 +46,9 @@
   
   /* 8. Improve line wrapping */
   p {
-    text-wrap: pretty;
+    word-wrap: break-word; /* Corrected property */
   }
   h1, h2, h3, h4, h5, h6 {
-    text-wrap: balance;
+    word-wrap: break-word; /* Corrected property */
   }
- 
+  
