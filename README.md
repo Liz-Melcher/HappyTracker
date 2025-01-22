@@ -16,4 +16,5 @@ It is done when non-completed habits can be tracked day of the week
 It is done when the website can be viewed on a computer screen or mobile device.
 
 ##Assets
-CSS Framework: TBD from Brittany 
+CSS Framework from Bootstrap (https://getbootstrap.com/)
+Icons from Google Materials (fonts.google.com)
