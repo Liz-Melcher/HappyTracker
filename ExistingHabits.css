@@ -1,0 +1,28 @@
+/* Add spacing between list items with the active class */
+.list-group-item.list-group-item-action.active {
+    margin-bottom: 10px; /* Adjust spacing as needed */
+  }
+  
+  /* Increase the gap between the items in the nav-underline list */
+  .nav.nav-underline {
+    gap: 15px; /* Adjust the gap between nav items */
+    display: flex; /* Ensure items are spaced evenly */
+  }
+  
+  /* Optional: Add padding or margin between list items in the nav */
+  .nav.nav-underline .nav-item {
+    margin-right: 10px; /* Adjust spacing between each nav item */
+  }
+
+  .centered-dropdown {
+    display: flex;          /* Enables Flexbox */
+    justify-content: center; /* Centers horizontally */
+    margin-top: 20px;       /* Adds space above the dropdown */
+    margin-bottom: 20px;
+  }
+
+ p {
+    text-align: center;
+    
+ }
+
