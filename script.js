@@ -1,18 +1,17 @@
-// Condensed function
-//Toggles habits
-//Displays habit time of day and frequency for tracking 
-function setupButtonToggle(buttonId, optionsId) {
+// Function to toggle tracking options based on button activity
+function setupToggle(buttonId, trackingOptionsId) {
     const button = document.getElementById(buttonId);
-    const options = document.getElementById(optionsId);
+    const trackingOptions = document.getElementById(trackingOptionsId);
   
     button.addEventListener('click', () => {
+      // Toggle the display of tracking options based on button's active state
       const isActive = button.classList.contains('active');
-      options.style.display = isActive ? 'block' : 'none';
+      trackingOptions.style.display = isActive ? 'block' : 'none';
     });
   }
   
-  // button and button tracking options: 
-  const buttonOptionsMapping = [
+  // Mapping of button IDs to their corresponding tracking option IDs
+  const habitMappings = [
     { buttonId: 'sleep', optionsId: 'sleep-tracking-options' },
     { buttonId: 'read', optionsId: 'read-tracking-options' },
     { buttonId: 'hydration', optionsId: 'hydration-tracking-options' },
@@ -21,30 +20,67 @@ function setupButtonToggle(buttonId, optionsId) {
     { buttonId: 'own', optionsId: 'own-tracking-options' },
   ];
   
-  // Run the function for each button 
-  buttonOptionsMapping.forEach(({ buttonId, optionsId }) =>
-    setupButtonToggle(buttonId, optionsId)
-  );
+  // Set up event listeners for each habit
+  habitMappings.forEach(mapping => {
+    setupToggle(mapping.buttonId, mapping.optionsId);
+  });
   
+  // Add a global click event listener to the document
+// document.addEventListener('click', (event) => {
+//     // Check if the clicked element is one of the buttons
+//     if (event.target.tagName === 'BUTTON') {
+//       console.log(`Clicked button ID: ${event.target.id}`);
+//     }
+//   });
 
-  // make the error pop up if no habits are selected and the person tries to move forward 
-  document.getElementById('continue-button').addEventListener('click', () => {
-    const habitButtons = document.querySelectorAll('.btn-habit'); // Assuming habit buttons have a class `btn-habit`
-    const errorMessage = document.getElementById('error-select');
+  // Function to log all active buttons
+function logActiveButtons() {
+    const activeButtons = habitMappings
+      .filter(mapping => {
+        const button = document.getElementById(mapping.buttonId);
+        return button.classList.contains('active');
+      })
+      .map(mapping => mapping.buttonId);
   
-    // Check if any habit button is selected (has the 'active' class)
-    const isAnyHabitSelected = Array.from(habitButtons).some(button =>
-      button.classList.contains('active')
-    );
+    console.log(`Active buttons: ${activeButtons.join(', ')}`);
+  }
   
-    if (!isAnyHabitSelected) {
-      // If no habit is selected, show the error
-      errorMessage.style.display = 'block';
-      event.preventDefault() // prevents navigtation
-    } else {
-      // Otherwise, hide the error and proceed
-      errorMessage.style.display = 'none';
-      window.location.href = 'ExistingHabits.html'; // Navigate to the desired page
+  // Add a global click event listener to the document
+//   document.addEventListener('click', (event) => {
+//     // Check if the clicked element is one of the buttons
+//     if (event.target.tagName === 'BUTTON') {
+//       console.log(`Clicked button ID: ${event.target.id}`);
+//       // Log currently active buttons
+//       logActiveButtons();
+//     }
+//   });
+  
+  // Function to update active button IDs in localStorage
+function updateActiveButtonsInLocalStorage() {
+    const activeButtons = habitMappings
+      .filter(mapping => {
+        const button = document.getElementById(mapping.buttonId);
+        return button.classList.contains('active');
+      })
+      .map(mapping => mapping.buttonId);
+  
+    // Store the active button IDs in localStorage
+    localStorage.setItem('activeButtons', JSON.stringify(activeButtons));
+  }
+  
+  // Add a global click event listener to the document
+  document.addEventListener('click', (event) => {
+    // Check if the clicked element is one of the buttons
+    if (event.target.tagName === 'BUTTON') {
+      console.log(`Clicked button ID: ${event.target.id}`);
+      
+      // Log currently active buttons
+      logActiveButtons();
+  
+      // Update active button IDs in localStorage
+      updateActiveButtonsInLocalStorage();
+      console.log(localStorage)
     }
   });
+  
   
