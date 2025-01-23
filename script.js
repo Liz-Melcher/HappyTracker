@@ -83,4 +83,20 @@ function updateActiveButtonsInLocalStorage() {
     }
   });
   
+  document.getElementById('continue-button').addEventListener('click', (event) => {
+    const activeButtons = habitMappings.some(mapping => {
+      const button = document.getElementById(mapping.buttonId);
+      return button.classList.contains('active');
+    });
+  
+    const errorSelectMessage = document.getElementById('error-select');
+  
+    // Prevent continuation if no active buttons
+    if (!activeButtons) {
+      event.preventDefault(); // Stop the default action (navigation)
+      errorSelectMessage.style.display = 'block'; // Show the error message
+    } else {
+      errorSelectMessage.style.display = 'none'; // Hide the error message if there are active habits
+    }
+  });
   
