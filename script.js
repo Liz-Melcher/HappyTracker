@@ -1,49 +1,50 @@
-//Make this script only for newHabits.html and not anything else? Otherwise it throws errors? 
+// Condensed function
+//Toggles habits
+//Displays habit time of day and frequency for tracking 
+function setupButtonToggle(buttonId, optionsId) {
+    const button = document.getElementById(buttonId);
+    const options = document.getElementById(optionsId);
+  
+    button.addEventListener('click', () => {
+      const isActive = button.classList.contains('active');
+      options.style.display = isActive ? 'block' : 'none';
+    });
+  }
+  
+  // button and button tracking options: 
+  const buttonOptionsMapping = [
+    { buttonId: 'sleep', optionsId: 'sleep-tracking-options' },
+    { buttonId: 'read', optionsId: 'read-tracking-options' },
+    { buttonId: 'hydration', optionsId: 'hydration-tracking-options' },
+    { buttonId: 'move', optionsId: 'move-tracking-options' },
+    { buttonId: 'meditate', optionsId: 'meditate-tracking-options' },
+    { buttonId: 'own', optionsId: 'own-tracking-options' },
+  ];
+  
+  // Run the function for each button 
+  buttonOptionsMapping.forEach(({ buttonId, optionsId }) =>
+    setupButtonToggle(buttonId, optionsId)
+  );
+  
 
-// window.onload = () => {
-//     const habitStates = JSON.parse(localStorage.getItem('habitStates')) || {};
-
-//     // Function to update the button based on state
-//     function updateButtonState(buttonId, state) {
-//         const button = document.getElementById(buttonId);
-//         if (state === 'active') {
-//             button.classList.add('active');
-//             button.setAttribute('aria-pressed', 'true');
-//         } else {
-//             button.classList.remove('active');
-//             button.setAttribute('aria-pressed', 'false');
-//         }
-//     }
-//     // Restore previous states from localStorage
-//     Object.keys(habitStates).forEach(buttonId => {
-//         updateButtonState(buttonId, habitStates[buttonId]);
-//     });
-
-//     // Add event listeners to each button
-//     const buttons = document.querySelectorAll('button[data-bs-toggle="button"]');
-//     buttons.forEach(button => {
-//         button.addEventListener('click', (e) => {
-//             const buttonId = e.target.id;
-//             const isActive = e.target.classList.contains('active') ? 'active' : 'inactive';
-//             habitStates[buttonId] = isActive;
-//             localStorage.setItem('habitStates', JSON.stringify(habitStates));
-//             console.log(localStorage)
-//         });
-//     });
-// };
-
-const sleepButton = document.getElementById('sleep');
-  const trackingOptions = document.getElementById('sleep-tracking-options');
-
-  sleepButton.addEventListener('click', () => {
-    // Check if the "Sleep" button is active
-    const isActive = sleepButton.classList.contains('active');
-    
-    if (isActive) {
-      // If the button is active, show the tracking options
-      trackingOptions.style.display = 'block';
+  // make the error pop up if no habits are selected and the person tries to move forward 
+  document.getElementById('continue-button').addEventListener('click', () => {
+    const habitButtons = document.querySelectorAll('.btn-habit'); // Assuming habit buttons have a class `btn-habit`
+    const errorMessage = document.getElementById('error-select');
+  
+    // Check if any habit button is selected (has the 'active' class)
+    const isAnyHabitSelected = Array.from(habitButtons).some(button =>
+      button.classList.contains('active')
+    );
+  
+    if (!isAnyHabitSelected) {
+      // If no habit is selected, show the error
+      errorMessage.style.display = 'block';
+      event.preventDefault() // prevents navigtation
     } else {
-      // If the button is not active, hide the tracking options
-      trackingOptions.style.display = 'none';
+      // Otherwise, hide the error and proceed
+      errorMessage.style.display = 'none';
+      window.location.href = 'ExistingHabits.html'; // Navigate to the desired page
     }
   });
+  
