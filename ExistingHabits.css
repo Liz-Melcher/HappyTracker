@@ -1,3 +1,21 @@
+.dayofweek ul.nav {
+  display: flex;             /* Apply Flexbox to the ul element */
+  justify-content: space-between; /* Distribute items evenly across the container */
+  padding: 0;               /* Remove default padding */
+  margin: 0;                /* Remove default margin */
+}
+
+.nav-item {
+  flex: 1;                  /* Allow the items to take up equal space */
+  text-align: center;       /* Center the text inside each item */
+}
+
+.nav-link {
+  display: block;           /* Make the <a> tag block-level to fill the <li> */
+  padding: 10px 0;          /* Add some padding for better spacing */
+}
+
+
 /* Add spacing between list items with the active class */
 .list-group-item.list-group-item-action.active {
     margin-bottom: 10px; /* Adjust spacing as needed */

@@ -1,0 +1,81 @@
+/* Reset margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Ensure the body takes up the entire viewport */
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: flex-start; /* Align to top */
+    padding-top: 30px;
+}
+
+/* Style the main container */
+#main-container {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 90%; /* Adjust width to fit smaller screens */
+    max-width: 600px; /* Limit maximum width for readability */
+}
+
+/* Style the custom list group */
+.list-group {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+    width: 100%; /* Full width of the container */
+    margin-bottom: 20px; /* Add spacing */
+}
+
+.list-group-item {
+    padding: 10px 15px;
+    border: none; /* Remove the border */
+    border-radius: 5px;
+    margin-bottom: 10px; /* Space between items */
+    text-align: center; /* Center text */
+    background-color: #fff;
+}
+
+/* Remove margin for the last item in lists */
+.list-group-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Style the card */
+.card {
+    width: 100%; /* Full width of the container */
+    margin-bottom: 20px; /* Space below */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 15px;
+    text-align: center;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    #main-container {
+        padding: 15px;
+    }
+    .list-group-item {
+        font-size: 14px;
+    }
+    .card-body {
+        font-size: 14px;
+    }
+}
