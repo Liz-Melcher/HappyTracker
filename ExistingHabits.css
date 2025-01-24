@@ -1,0 +1,46 @@
+.dayofweek ul.nav {
+  display: flex;             /* Apply Flexbox to the ul element */
+  justify-content: space-between; /* Distribute items evenly across the container */
+  padding: 0;               /* Remove default padding */
+  margin: 0;                /* Remove default margin */
+}
+
+.nav-item {
+  flex: 1;                  /* Allow the items to take up equal space */
+  text-align: center;       /* Center the text inside each item */
+}
+
+.nav-link {
+  display: block;           /* Make the <a> tag block-level to fill the <li> */
+  padding: 10px 0;          /* Add some padding for better spacing */
+}
+
+
+/* Add spacing between list items with the active class */
+.list-group-item.list-group-item-action.active {
+    margin-bottom: 10px; /* Adjust spacing as needed */
+  }
+  
+  /* Increase the gap between the items in the nav-underline list */
+  .nav.nav-underline {
+    gap: 15px; /* Adjust the gap between nav items */
+    display: flex; /* Ensure items are spaced evenly */
+  }
+  
+  /* Optional: Add padding or margin between list items in the nav */
+  .nav.nav-underline .nav-item {
+    margin-right: 10px; /* Adjust spacing between each nav item */
+  }
+
+  .centered-dropdown {
+    display: flex;          /* Enables Flexbox */
+    justify-content: center; /* Centers horizontally */
+    margin-top: 20px;       /* Adds space above the dropdown */
+    margin-bottom: 20px;
+  }
+
+ p {
+    text-align: center;
+    
+ }
+
