@@ -1,4 +1,4 @@
-// Function to toggle tracking options based on button activity
+// Efficient function; tracks buttons that are toggled by the toggle state and button ID 
 function setupToggle(buttonId, trackingOptionsId) {
     const button = document.getElementById(buttonId);
     const trackingOptions = document.getElementById(trackingOptionsId);
@@ -24,16 +24,9 @@ function setupToggle(buttonId, trackingOptionsId) {
   habitMappings.forEach(mapping => {
     setupToggle(mapping.buttonId, mapping.optionsId);
   });
-  
-  // Add a global click event listener to the document
-// document.addEventListener('click', (event) => {
-//     // Check if the clicked element is one of the buttons
-//     if (event.target.tagName === 'BUTTON') {
-//       console.log(`Clicked button ID: ${event.target.id}`);
-//     }
-//   });
 
-  // Function to log all active buttons
+  // Function to log all active buttons to the console
+  //This function may not be needed in the final version--------------
 function logActiveButtons() {
     const activeButtons = habitMappings
       .filter(mapping => {
@@ -45,17 +38,8 @@ function logActiveButtons() {
     console.log(`Active buttons: ${activeButtons.join(', ')}`);
   }
   
-  // Add a global click event listener to the document
-//   document.addEventListener('click', (event) => {
-//     // Check if the clicked element is one of the buttons
-//     if (event.target.tagName === 'BUTTON') {
-//       console.log(`Clicked button ID: ${event.target.id}`);
-//       // Log currently active buttons
-//       logActiveButtons();
-//     }
-//   });
   
-  // Function to update active button IDs in localStorage
+  // Sends active button IDs to local storage 
 function updateActiveButtonsInLocalStorage() {
     const activeButtons = habitMappings
       .filter(mapping => {
@@ -68,7 +52,9 @@ function updateActiveButtonsInLocalStorage() {
     localStorage.setItem('activeButtons', JSON.stringify(activeButtons));
   }
   
-  // Add a global click event listener to the document
+  // Add a global click event listener to the document to run the functions that
+  // - console log the active buttons
+  // - send the buttons to local storeage 
   document.addEventListener('click', (event) => {
     // Check if the clicked element is one of the buttons
     if (event.target.tagName === 'BUTTON') {
@@ -83,6 +69,7 @@ function updateActiveButtonsInLocalStorage() {
     }
   });
   
+  // gives an error if no habits are elected 
   document.getElementById('continue-button').addEventListener('click', (event) => {
     const activeButtons = habitMappings.some(mapping => {
       const button = document.getElementById(mapping.buttonId);

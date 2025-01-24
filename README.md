@@ -17,4 +17,6 @@ It is done when the website can be viewed on a computer screen or mobile device.
 
 ##Assets
 CSS Framework from Bootstrap (https://getbootstrap.com/)
-Icons from Google Materials (fonts.google.com)
+Javascript Frameworks from Bootstrap, especially for toggle buttons
+Javascript from Day.js for days of the week calculations (https://day.js.org/en/)
+
