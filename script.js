@@ -1,11 +1,11 @@
 // Efficient function; tracks buttons that are toggled by the toggle state and button ID 
 function setupToggle(buttonId, trackingOptionsId) {
-    const button = document.getElementById(buttonId);
+    const habitbutton = document.getElementById(buttonId);
     const trackingOptions = document.getElementById(trackingOptionsId);
   
-    button.addEventListener('click', () => {
+    habitbutton.addEventListener('click', () => {
       // Toggle the display of tracking options based on button's active state
-      const isActive = button.classList.contains('active');
+      const isActive = habitbutton.classList.contains('active');
       trackingOptions.style.display = isActive ? 'block' : 'none';
     });
   }
@@ -26,22 +26,21 @@ function setupToggle(buttonId, trackingOptionsId) {
   });
 
   // Function to log all active buttons to the console
-  //This function may not be needed in the final version--------------
 function logActiveButtons() {
-    const activeButtons = habitMappings
+    const activeHabitButtons = habitMappings
       .filter(mapping => {
         const button = document.getElementById(mapping.buttonId);
         return button.classList.contains('active');
       })
       .map(mapping => mapping.buttonId);
   
-    console.log(`Active buttons: ${activeButtons.join(', ')}`);
+    console.log(`Active buttons: ${activeHabitButtons.join(', ')}`);
   }
   
   
   // Sends active button IDs to local storage 
-function updateActiveButtonsInLocalStorage() {
-    const activeButtons = habitMappings
+function updateActiveHabitButtonsInLocalStorage() {
+    const activeHabitButtons = habitMappings
       .filter(mapping => {
         const button = document.getElementById(mapping.buttonId);
         return button.classList.contains('active');
@@ -49,7 +48,7 @@ function updateActiveButtonsInLocalStorage() {
       .map(mapping => mapping.buttonId);
   
     // Store the active button IDs in localStorage
-    localStorage.setItem('activeButtons', JSON.stringify(activeButtons));
+    localStorage.setItem('activeHabitButtons', JSON.stringify(activeHabitButtons));
   }
   
   // Add a global click event listener to the document to run the functions that
@@ -64,14 +63,14 @@ function updateActiveButtonsInLocalStorage() {
       logActiveButtons();
   
       // Update active button IDs in localStorage
-      updateActiveButtonsInLocalStorage();
+      updateActiveHabitButtonsInLocalStorage();
       console.log(localStorage)
     }
   });
   
   // gives an error if no habits are elected 
   document.getElementById('continue-button').addEventListener('click', (event) => {
-    const activeButtons = habitMappings.some(mapping => {
+    const hasActiveHabitButtons = habitMappings.some(mapping => {
       const button = document.getElementById(mapping.buttonId);
       return button.classList.contains('active');
     });
@@ -79,7 +78,7 @@ function updateActiveButtonsInLocalStorage() {
     const errorSelectMessage = document.getElementById('error-select');
   
     // Prevent continuation if no active buttons
-    if (!activeButtons) {
+    if (!hasActiveHabitButtons) {
       event.preventDefault(); // Stop the default action (navigation)
       errorSelectMessage.style.display = 'block'; // Show the error message
     } else {

@@ -1,25 +1,26 @@
 console.log ('ExistingHabitsDemo js is loaded')
 
+
 //Pull data about chosen habits from local storage
 // Active buttons are saved in local storage by ID in the html 
-function getActiveButtonsFromLocalStorage() {
+function getActiveHabitButtonsFromLocalStorage() {
     // Get the data from local storage
-    const activeButtons = localStorage.getItem('activeButtons');
+    const activeHabitButtons = localStorage.getItem('activeHabitButtons');
     
     //Parse
-    return activeButtons ? JSON.parse(activeButtons) : [];
+    return activeHabitButtons ? JSON.parse(activeHabitButtons) : [];
   }
   
   //console log the active buttons for debugging
-  const activeButtons = getActiveButtonsFromLocalStorage();
-  console.log(`Retrieved active buttons: ${activeButtons.join(', ')}`);
+  const activeHabitButtons = getActiveHabitButtonsFromLocalStorage();
+  console.log(`Retrieved active buttons: ${activeHabitButtons.join(', ')}`);
   
 
 
 //Unhide chosen habits when they are selected
 function updateCardVisibility() {
     // Retrieve active buttons from local storage
-    const activeButtons = getActiveButtonsFromLocalStorage();
+    const activeHabitButtons = getActiveHabitButtonsFromLocalStorage();
   
     // Hides all card bodies; card body class is CSS from bootstrap
     const allCardBodies = document.querySelectorAll('.card-body');
@@ -28,7 +29,7 @@ function updateCardVisibility() {
     });
   
     // Decide which buttons are active buttons; display card bodies for those buttons only (buttons=habits) 
-    activeButtons.forEach(buttonId => {
+    activeHabitButtons.forEach(buttonId => {
       // Construct the ID of the card body based on the button ID
       const cardBodyId = `${buttonId}Habit`;
       const cardBody = document.getElementById(cardBodyId);
@@ -99,10 +100,67 @@ document.addEventListener('DOMContentLoaded', () => {
     activateCurrentAndPastDays();
 });
 
-
-
-
-
 //Read the toggle state of each button and store it in local memory 
 
-//Continue button should lead to charts 
+  // Save button states to local storage
+  //Each habit is stored as an object.  Each object has an array of days
+
+  // Store the days for each habit when buttons are clicked
+function updateHabitDaysInLocalStorage(habitName, day) {
+  // Retrieve the existing habit data from local storage
+  let habitData = JSON.parse(localStorage.getItem('habitData')) || {};
+
+  // If the habit doesn't exist yet, initialize it with an empty array
+  if (!habitData[habitName]) {
+    habitData[habitName] = [];
+  }
+
+  // If the day is not already in the array, add it
+  if (!habitData[habitName].includes(day)) {
+    habitData[habitName].push(day);
+  } else {
+    // If it's already in the array, remove it (toggle behavior)
+    habitData[habitName] = habitData[habitName].filter(d => d !== day);
+  }
+
+  // Save the updated habit data back to local storage
+  localStorage.setItem('habitData', JSON.stringify(habitData));
+
+  // Log for debugging
+  console.log('Updated habit data:', habitData);
+}
+
+// Function to handle button click for tracking days
+// Function to handle button clicks and toggle state
+function setupDayButtonClick(buttonId, habitName) {
+  const button = document.getElementById(buttonId);
+  
+  if (button) {
+    // Attach the event listener only if the button exists
+    button.addEventListener('click', () => {
+      const day = button.id.split('-')[1]; // Get the day from the button ID (e.g., "sleep-Sunday")
+
+      // Update the habit days in localStorage
+      updateHabitDaysInLocalStorage(habitName, day);
+
+      // Toggle the button active state (this part could be added if you'd like to show/hide the active class)
+      button.classList.toggle('active');
+    });
+  } else {
+    // Log an error if the button isn't found
+    console.error(`Button with ID ${buttonId} not found.`);
+  }
+}
+
+// Wait for the DOM to fully load before setting up buttons
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("Page is fully loaded.");
+  
+  // Set up event listeners for the day buttons for each habit
+  ['sleep', 'read', 'hydration', 'move', 'meditate', 'own'].forEach(habit => {
+    ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].forEach(day => {
+      const buttonId = `${habit}-${day}`;
+      setupDayButtonClick(buttonId, habit); // Set up the event listener for each button
+    });
+  });
+});

@@ -3,80 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mainPage</title>
-    <link rel="stylesheet" href="ExistingHabits.css">
+    <title>Track Our Habits</title>
+    <!--<link rel="stylesheet" href="styles.css">-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="ExistingHabits.css">
-    <script src="script.js" defer></script>
+    
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script>dayjs().format()</script>
+    <script src="ExistingHabitsDemo.js"></script>
+  
 
 </head>
 
 <body>
-    <div class="card-group">
-        <div class="card">
-            <div class="centered-dropdown">
-                <div class="dropdown">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      This Week
-                    </a>     
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Next Week</a></li>
-                      <li><a class="dropdown-item" href="#">Past Week</a></li>
-                    </ul>
-                </div>
-            </div>
-            <p>Choose the habit you want to track</p>
 
-            <div class="dayofweek">
-                <ul class="nav nav-underline">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sun</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Mon</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Tue</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Wed</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Thu</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Fri</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sat</a>
-                    </li>
-                </ul>
-            </div>
-            <div id="yourhabis">
-                <div class="list-group">
-                    <li class="list-group-item list-group-item-action active" aria-current="true">
-                      Your new habit
-                    </li>
-                    <li type="button" class="list-group-item list-group-item-action">
-                        <a href="ExistingHabits-page2.html" class="text-decoration-none text-dark">Drinking Water</a>
-                    </li>
-                    <li type="button" class="list-group-item list-group-item-action">
-                        <a href="ExistingHabits-page2.html" class="text-decoration-none text-dark">Go to Gym</a>
-                    </li>
-                    <li type="button" class="list-group-item list-group-item-action">
-                        <a href="ExistingHabits-page2.html" class="text-decoration-none text-dark">Reading</a>
-                    </li> 
-                    <li type="button" class="list-group-item list-group-item-action">
-                        <a href="ExistingHabits-page2.html" class="text-decoration-none text-dark">Painting (weekly)</a>
-                    </li> 
-                    <li type="button" class="list-group-item list-group-item-action">
-                        <a href="ExistingHabits-page2.html" class="text-decoration-none text-dark">Book Club (weekly)</a>
-                    </li>                      
+    <body>
+        <div class="card text-center mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Track your habits</h5>
+            </div> <!--end of card title-->
+        </div> <!--end of top card with title-->
+    
+        <div class="row"> <!--first row-->
+            <div class="col-sm-6 mb-3 mb-sm-0">
+              <div class="card text-center">
+                <div class="card-body" style="display: none;" id="sleepHabit">
+                    <h5 class="card-title">Sleep.</h5>
+                     I slept well on
+                     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                      <!--buttons group for days of the week.-->
+                      <div class="btn-group me-2" role="group" aria-label="First group"> 
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="sleep-Sunday" disabled>Sun</button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="sleep-Monday" disabled>Mon</button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="sleep-Tuesday" disabled>Tue</button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="sleep-Wednesday" disabled>Wed</button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="sleep-Thursday" disabled>Thu
+                        </button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="sleep-Friday" disabled>Fri
+                        </button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="sleep-Saturday" disabled>Sat
+                        </button>
+                      </div> <!--end of buttons group-->
+                    </div>
+                </div> <!--end of first card body: sleep-->
+              </div> <!--end of card div-->
+            </div> <!--end of card/column-->
+            <div class="col-sm-6">
+              <div class="card text-center">
+                <div class="card-body" style="display: none;" id="readHabit">
+                  <h5 class="card-title">Read.</h5>
+                  I read on
+                  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <!--buttons group for days of the week.-->
+                    <div class="btn-group me-2" role="group" aria-label="First group"> 
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="read-Sunday" disabled>Sun</button>
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="read-Monday" disabled>Mon</button>
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="read-Tuesday" disabled>Tue</button>
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="read-Wednesday" disabled>Wed</button>
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="read-Thursday" disabled>Thu
+                      </button>
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="read-Friday" disabled>Fri
+                      </button>
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="read-Saturday" disabled>Sat
+                      </button>
+                    </div> <!--end of buttons group-->
+                  </div>
                 </div>
+              </div>
             </div>
+          </div> <!--end of first row-->
+    
+    
+          <div class="row">  <!--second row-->
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="card text-center">
+                  <div class="card-body" style="display: none;" id="hydrationHabit">
+                      <h5 class="card-title">I managed hydration on</h5>
+                      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                        <!--buttons group for days of the week.-->
+                        <div class="btn-group me-2" role="group" aria-label="First group"> 
+                          <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="hydration-Sunday" disabled>Sun</button>
+                          <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="hydration-Monday" disabled>Mon</button>
+                          <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="hydration-Tuesday" disabled>Tue</button>
+                          <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="hydration-Wednesday" disabled>Wed</button>
+                          <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="hydration-Thursday" disabled>Thu</button>
+                          <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="hydration-Friday" disabled>Fri
+                          </button>
+                          <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="hydration-Saturday" disabled>Sat
+                          </button>
+                        </div> <!--end of buttons group-->
+                      </div>
+                  </div> <!--end of first card body: sleep-->
+                </div> <!--end of card div-->
+              </div> <!--end of card and column-->
+              <div class="col-sm-6">
+                <div class="card text-center">
+                  <div class="card-body" style="display: none;" id="moveHabit">
+                    <h5 class="card-title">I moved my body on</h5>
+                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                      <!--buttons group for days of the week.-->
+                      <div class="btn-group me-2" role="group" aria-label="First group"> 
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="move-Sunday" disabled>Sun</button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="move-Monday" disabled>Mon</button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="move-Tuesday" disabled>Tue</button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="move-Wednesday" disabled>Wed</button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="move-Thursday" disabled>Thu
+                        </button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="move-Friday" disabled>Fri
+                        </button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="move-Saturday" disabled>Sat
+                        </button>
+                      </div> <!--end of buttons group-->
+                    </div>
+                  </div> <!-- end of div that is hidden until the button is selected-->
+                  </div>
+                </div>
+              </div>
+          </div> <!--end of second row-->
+    
+    
+          <div class="row"> <!--third row-->
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="card text-center">
+                  <div class="card-body" style="display: none;" id="meditateHabit">
+                      <h5 class="card-title">I meditated on</h5>
+                      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                        <!--buttons group for days of the week.-->
+                        <div class="btn-group me-2" role="group" aria-label="First group"> 
+                          <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="meditate-Sunday" disabled>Sun</button>
+                          <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="meditate-Monday" disabled>Mon</button>
+                          <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="meditate-Tuesday" disabled>Tue</button>
+                          <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="meditate-Wednesday" disabled>Wed</button>
+                          <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="meditate-Thursday" disabled>Thu
+                          </button>
+                          <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="meditate-Friday" disabled>Fri
+                          </button>
+                          <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="meditate-Saturday" disabled>Sat
+                          </button>
+                        </div> <!--end of buttons group-->
+                      </div>
+                
+                  </div> <!--end of first card body: sleep-->
+                </div> <!--end of card div-->
+              </div> <!--end of card/column-->
+              <div class="col-sm-6">
+                <div class="card text-center">
+                  <div class="card-body" style="display: none;" id="ownHabit">
+                    <h5 class="card-title">I want to track my own.</h5>
+                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                      <!--buttons group for days of the week.-->
+                      <div class="btn-group me-2" role="group" aria-label="First group"> 
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="own-Sunday" disabled>Sun</button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="own-Monday" disabled>Mon</button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="own-Tuesday" disabled>Tue</button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="own-Wednesday" disabled>Wed</button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="own-Thursday" disabled>Thu
+                        </button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="own-Friday" disabled>Fri
+                        </button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" id="own-Saturday" disabled>Sat
+                        </button>
+                      </div> <!--end of buttons group-->
+                    </div>
+                </div>
+              </div>
+          </div> <!--end of third row-->
+        
+    
         </div>
-      </div>
+    </section>
+    
+            <div class="container text-center py-4" >
+                <div class="row align-items-center">
+                  <div class="col"> <!--blank first column-->
+                  </div>
+                  <div class="col">
+                    <a href="charts.html">
+                        <button class="btn btn-primary" type="button" id="continue-button">
+                          Continue
+                        </button>
+                      </a>
+                      <p style="display: none;", id="error-select">Please make a selection!</p>
+                  </div>
+                  <div class="col"> <!--blank third column-->
+                  </div>
+                </div><!--end of row align items center-->
+              </div><!--end of div for container for buttons-->
+              <footer class="py-4">
+                <div class="container text-center">
+                  <div class="row align-items-center">
+                    <div class="col"> <!--blank first column-->
+                    </div>
+                    <div class="col">
+                      <a href="index.html">
+                          <button class="btn btn-primary" type="button" id="continue-button">
+                            Home
+                          </button>
+                        </a>
+                        <p style="display: none;", id="error-select">Please make a selection!</p>
+                    </div>
+                    <div class="col"> <!--blank third column-->
+                    </div>
+                  </div><!--end of row align items center-->
+                </div><!--end of div for container for buttons-->
+              </footer>
+         
+    
+        
+    
+    
 
 </body>
-<footer></footer>
+
+</html>
 </html>
