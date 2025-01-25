@@ -128,6 +128,7 @@ function updateHabitDaysInLocalStorage(habitName, day) {
 
   // Log for debugging
   console.log('Updated habit data:', habitData);
+  displayTrackedDays(habitName);
 }
 
 // Function to handle button click for tracking days
@@ -163,4 +164,39 @@ document.addEventListener('DOMContentLoaded', () => {
       setupDayButtonClick(buttonId, habit); // Set up the event listener for each button
     });
   });
+});
+
+// Function to display the tracked days for a specific habit
+function displayTrackedDays(habitName) {
+  // Retrieve the habit data from localStorage
+  const habitData = JSON.parse(localStorage.getItem('habitData')) || {};
+  
+  // Get the days for the specific habit
+  const trackedDays = habitData[habitName] || [];
+
+  // Get the container where the message will be displayed (You can customize this for each habit)
+  const habitMessageContainer = document.getElementById(`${habitName}-message`);
+
+  // If the message container exists, update it with the tracked days
+  if (habitMessageContainer) {
+      if (trackedDays.length > 0) {
+          habitMessageContainer.innerHTML = `You have tracked ${habitName} on: ${trackedDays.join(', ')}`;
+          habitMessageContainer.style.display = 'block';  // Show the message
+      } else {
+          habitMessageContainer.innerHTML = '';  // Clear the message
+          habitMessageContainer.style.display = 'none';  // Hide the message
+      }
+  }
+}
+
+// Function to call displayTrackedDays for all habits
+function updateAllTrackedMessages() {
+  ['sleep', 'read', 'hydration', 'move', 'meditate', 'own'].forEach(habit => {
+      displayTrackedDays(habit);
+  });
+}
+
+// Call the function to update the messages when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+  updateAllTrackedMessages();
 });
