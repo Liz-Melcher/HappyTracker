@@ -49,3 +49,5 @@ Javascript Frameworks from Bootstrap, especially for toggle buttons
 Javascript from Day.js for days of the week calculations (https://day.js.org/en/)
 Planned for charts: Chart.js (https://www.chartjs.org/docs/latest/)
 
+##Deployed application: (https://liz-melcher.github.io/HappyTracker/)
+
