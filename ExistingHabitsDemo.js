@@ -1,3 +1,4 @@
+//first make sure the script is loading properly
 console.log ('ExistingHabitsDemo js is loaded')
 
 
@@ -7,7 +8,7 @@ function getActiveHabitButtonsFromLocalStorage() {
     // Get the data from local storage
     const activeHabitButtons = localStorage.getItem('activeHabitButtons');
     
-    //Parse
+    //Parse from a string back into an array 
     return activeHabitButtons ? JSON.parse(activeHabitButtons) : [];
   }
   
