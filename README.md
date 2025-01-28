@@ -1,15 +1,15 @@
 # HappyTracker
 Bootcamp Project 1 
 
-##Task: Create a tracker to manage chores and habits. 
+## Task: Create a tracker to manage chores and habits. 
 
 
-##User Story
+## User Story
 As a developer, I want to which days of the week I am most productive.
 I want to create a habit tracker that: Tracks habits daily
 
 
-##Acceptance Criteria
+## Acceptance Criteria
 Starting Index.html page:
 It is done when: 
 Landing page directs users to pick a habit to start tracking
