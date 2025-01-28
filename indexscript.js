@@ -1,3 +1,5 @@
+console.log("index script is loaded")
+
 //logic to prevent tracking existing habits when none are loaded 
 
 document.addEventListener("DOMContentLoaded", function() {
