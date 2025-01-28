@@ -2,9 +2,9 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     // Check if habit data exists in localStorage
-    var habitData = localStorage.getItem("habitData"); // Change "habitData" to the actual key you are using to store habits
-    var message = document.querySelector(".no-habits-message");
-    var continueButton = document.querySelector("#continueTrackingButton");
+    let habitData = localStorage.getItem("activeHabitButtons"); 
+    let message = document.querySelector(".no-habits-message");
+    let continueButton = document.querySelector("#continueTrackingButton");
 
     // If no habit data found, show the message and disable the button
     if (!habitData) {
